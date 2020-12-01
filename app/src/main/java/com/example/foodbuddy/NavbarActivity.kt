@@ -58,11 +58,11 @@ class NavbarActivity : AppCompatActivity() {
                         "Clicked Recipes",
                         Toast.LENGTH_SHORT
                 ).show()
-                R.id.itemAddFriend -> Toast.makeText(
+                /*R.id.itemAddFriend -> Toast.makeText(
                         applicationContext,
                         "Clicked Friend",
                         Toast.LENGTH_SHORT
-                ).show()
+                ).show()*/
                 R.id.itemAccount -> Toast.makeText(
                         applicationContext,
                         "Clicked Account",
@@ -93,12 +93,16 @@ class NavbarActivity : AppCompatActivity() {
                 }
                 R.id.itemRecipes -> {
                     //recipesFragment = RecipesFragment()
-                    supportFragmentManager
-                            .beginTransaction()
+                    toRecipes()
 //                    val intent = Intent(this, RecipesActivity::class.java);
 //                    startActivity(intent)
 //                    drawerLayout.closeDrawers()
                 }
+
+                R.id.itemAccount -> {
+                    toMyAccount()
+                }
+
                 //region
                 /*
                 R.id.itemAddFriend -> {
@@ -248,6 +252,14 @@ class NavbarActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun toRecipes() {
+        launchActivity<RecipesSuggestionActivity>()
+    }
+
+    private fun toMyAccount() {
+        launchActivity<MyAccountActivity>()
     }
 
     private fun addFood(item: String, brand: String, password: String)
